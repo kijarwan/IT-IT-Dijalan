@@ -1,0 +1,6 @@
+{
+  "name": "Laporan Pelaksanaan Harian Technical Assistant",
+  "description": "Aplikasi laporan pelaksanaan harian dan bulanan Technical Assistant PT Energi Duta Utama / PT PLN Indonesia Power dengan penyimpanan lokal IndexedDB, sinkronisasi Google Drive, serta ekspor PDF, Excel, dan CSV format A4 resmi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
