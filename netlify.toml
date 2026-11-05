@@ -9,3 +9,7 @@
   # ship in the client bundle. Regular secrets scanning of environment variable
   # values (e.g. GEMINI_API_KEY) remains enabled.
   SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 3000

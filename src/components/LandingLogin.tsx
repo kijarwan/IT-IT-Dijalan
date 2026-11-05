@@ -41,8 +41,8 @@ export const LandingLogin: React.FC<LandingLoginProps> = ({
   onLogin,
 }) => {
   const [selectedRole, setSelectedRole] = useState<UserRole>('worker');
-  const [nama, setNama] = useState<string>('Desi Natalia Gultom');
-  const [nip, setNip] = useState<string>('40920241363');
+  const [nama, setNama] = useState<string>('');
+  const [nip, setNip] = useState<string>('');
   const [selectedUnitId, setSelectedUnitId] = useState<string>(
     units[0]?.id || 'unit-labuhan-angin'
   );
@@ -51,26 +51,9 @@ export const LandingLogin: React.FC<LandingLoginProps> = ({
   const handleRoleSwitch = (role: UserRole) => {
     setSelectedRole(role);
     setErrorMsg(null);
-    if (role === 'admin') {
-      const firstAdmin = admins[0];
-      if (firstAdmin) {
-        setNama(firstAdmin.nama);
-        setNip(firstAdmin.nip);
-      } else {
-        setNama('Primazahra Agya Zaenal Mutaqin');
-        setNip('199008152018');
-      }
-    } else {
-      const firstWorker = workers[0];
-      if (firstWorker) {
-        setNama(firstWorker.nama);
-        setNip(firstWorker.nip);
-        setSelectedUnitId(firstWorker.unitId);
-      } else {
-        setNama('Desi Natalia Gultom');
-        setNip('40920241363');
-      }
-    }
+    // Always start with empty fields so users type their own Nama & NIP
+    setNama('');
+    setNip('');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -308,7 +291,7 @@ export const LandingLogin: React.FC<LandingLoginProps> = ({
               <div id="sinkronisasi" className="flex items-center gap-2">
                 <FileCheck2 className="w-4 h-4 text-emerald-600" />
                 <span>
-                  Database Terpusat di Google Drive (Otomatis Sinkron)
+                  Database Cloud Terpusat (Otomatis Sinkron Antar Perangkat)
                 </span>
               </div>
             </div>

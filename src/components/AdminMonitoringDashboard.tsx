@@ -122,7 +122,8 @@ export const AdminMonitoringDashboard: React.FC<
         const mData: MonthReportData = await loadMonthData(
           selectedYear,
           selectedMonth,
-          w.id
+          w.id,
+          { resolveImages: false }
         );
         const days = Object.values(mData.days);
         const filled = days.filter(

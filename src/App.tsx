@@ -232,12 +232,16 @@ export default function App() {
   }, []);
 
   // Load active worker's monthly report data whenever selectedYear, selectedMonth, activeWorkerId, or syncTick changes
+  const loadedMonthKeyRef = useRef<string | null>(null);
   useEffect(() => {
     let active = true;
-    setIsLoading(true);
+    const requestKey = `${activeWorkerId}-${selectedYear}-${selectedMonth}`;
+    // Only show the loading state when switching month/worker, not on background sync refreshes
+    if (loadedMonthKeyRef.current !== requestKey) setIsLoading(true);
     loadMonthData(selectedYear, selectedMonth, activeWorkerId)
       .then((loadedMonth) => {
         if (!active) return;
+        loadedMonthKeyRef.current = requestKey;
         setMonthData(loadedMonth);
         setLastSavedTime(
           new Date().toLocaleTimeString('id-ID', {
