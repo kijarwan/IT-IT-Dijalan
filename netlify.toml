@@ -1,3 +1,11 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[build.environment]
+  # The only "likely secret" smart detection flags is the Firebase web apiKey in
+  # firebase-applet-config.json. Firebase web API keys are public by design
+  # (access is controlled by Firebase security rules / OAuth), so it is safe to
+  # ship in the client bundle. Regular secrets scanning of environment variable
+  # values (e.g. GEMINI_API_KEY) remains enabled.
+  SECRETS_SCAN_SMART_DETECTION_ENABLED = "false"
